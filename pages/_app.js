@@ -14,12 +14,12 @@ export default function App({ Component, pageProps }) {
         .then(() => {
           if (liff.isLoggedIn()) {
             // プロフィール情報の取得をする
-          } else {
-            setLiffState([liff, null]);
+            liff.getProfile().then((profile) => {
+              setLiffState([liff, profile]);
+            }).catch((err) => {
+              console.warn({ err });
+            });
           }
-        })
-        .catch((err) => {
-          console.warn({ err });
         });
     });
   }, []);
