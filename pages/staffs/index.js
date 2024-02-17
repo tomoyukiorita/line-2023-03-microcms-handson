@@ -10,7 +10,7 @@ import { lineNotify } from "../../lib/lineNotify";
 import { fetchThisWeeks, isIncludeWorkday, getReservation, createReservationData } from '../../lib/util'
 import { useRouter } from 'next/router'
 
-var weekJp = ["月", "火", "水", "木", "金"];
+var weekJp = ["日","月", "火", "水", "木", "金","土"];
 
 export default function Staff({ serviceDomain, microcmsApiKey }) {
   const { profile } = useContext(LiffContext);

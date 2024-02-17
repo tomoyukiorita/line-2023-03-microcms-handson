@@ -1,9 +1,12 @@
 export const fetchThisWeeks = () => {
   const today = new Date(); // 今日の日付を取得
   const dates = [];
-  const diff = today.getDay();
   for(var i = 0 ; i < 7 ; i ++) {
-    dates.push(new Date(today.getTime() + (i * 24 * 60 * 60 * 1000)))
+    const day = new Date(today.getTime() + (i * 24 * 60 * 60 * 1000)); // 今日を含む7日間の日付を生成
+    const dayOfWeek = day.getDay(); // 曜日を取得 (日曜日=0, 月曜日=1, ..., 土曜日=6)
+    if (dayOfWeek >= 1 && dayOfWeek <= 5) { // 月曜日から金曜日の場合
+      dates.push(day);
+    }
   }
   return dates;
 }
