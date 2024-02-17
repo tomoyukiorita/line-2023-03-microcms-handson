@@ -10,7 +10,7 @@ import { lineNotify } from "../../lib/lineNotify";
 import { fetchThisWeeks, isIncludeWorkday, getReservation, createReservationData } from '../../lib/util'
 import { useRouter } from 'next/router'
 
-var weekJp = ["日", "月", "火", "水", "木", "金", "土"];
+var weekJp = ["月", "火", "水", "木", "金"];
 
 export default function Staff({ serviceDomain, microcmsApiKey }) {
   const { profile } = useContext(LiffContext);
@@ -80,8 +80,8 @@ export default function Staff({ serviceDomain, microcmsApiKey }) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {[...Array(12)].map((_, _hour) => {
-                const hour = _hour + 8
+              {[...Array(8)].map((_, _hour) => {
+                const hour = _hour + 13
                 return (
                   <TableRow key={`staff-${hour}`}>
                     <TableCell key={`hour-${hour}`}>
