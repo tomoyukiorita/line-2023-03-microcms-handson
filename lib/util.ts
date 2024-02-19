@@ -1,8 +1,9 @@
 export const fetchThisWeeks = () => {
   const today = new Date(); // 今日の日付を取得
+  const threeDaysLater = new Date(today.getTime() + (3 * 24 * 60 * 60 * 1000)); // 3日後の日付を取得
   const dates = [];
-  for(var i = 0 ; i < 7 ; i ++) {
-    const day = new Date(today.getTime() + (i * 24 * 60 * 60 * 1000)); // 今日を含む7日間の日付を生成
+  for (var i = 0; i < 7; i++) {
+    const day = new Date(threeDaysLater.getTime() + (i * 24 * 60 * 60 * 1000)); // 3日後を基準に7日間の日付を生成
     const dayOfWeek = day.getDay(); // 曜日を取得 (日曜日=0, 月曜日=1, ..., 土曜日=6)
     if (dayOfWeek >= 1 && dayOfWeek <= 5) { // 月曜日から金曜日の場合
       dates.push(day);
@@ -10,6 +11,7 @@ export const fetchThisWeeks = () => {
   }
   return dates;
 }
+
 
 export const isSameDate = (a, b) => {
   if(a.getFullYear() != b.getFullYear())return false;
@@ -58,7 +60,7 @@ export const createReservationData = (date, staffId, profile) => {
     course: 1,
     reservationAt: date,
     clientFreeForm: '',
-    staffFreeForm: `${profile.displayName}様 ご予約ありがとうございます。お待ちしております。`,
+    staffFreeForm: `${profile.displayName}様 ご予約ありがとうございます。当日よろしくお願い致します。`,
   }
 }
 
